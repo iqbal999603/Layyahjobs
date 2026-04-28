@@ -40,10 +40,22 @@ def fetch_all_jobs():
     res = supabase.table("jobs").select("*").order("created_at", desc=True).execute()
     return res.data if res.data else []
 
-# ================== UI ==================
+# ================== UI (نیا ہیڈر) ==================
 st.set_page_config(page_title="لیّہ جاب پورٹل", layout="wide")
-st.title("💼 لیّہ جاب پورٹل")
-st.markdown("### مقامی نوکریوں کا مرکز — بغیر لاگ ان")
+
+# ✨ نیا ہیڈر — نکاح سنت ہے بٹن کے ساتھ
+st.markdown("""
+<div style="text-align:center; padding:20px; background:linear-gradient(135deg, #2d1a1a, #b30047); border-radius:20px; border:1px solid #ff9f43; margin-bottom:20px;">
+    <h1 style="color:#f0d9d9;">💼 لیّہ جاب پورٹل</h1>
+    <p style="color:#ff9f43;">مقامی نوکریوں کا مرکز — بغیر لاگ ان</p>
+    <a href="https://rishtamatch.streamlit.app/" target="_blank" 
+       style="display:inline-block; margin-top:12px; background:gold; color:#1a0a0a; 
+              padding:10px 30px; border-radius:50px; text-decoration:none; 
+              font-weight:bold; font-size:18px; box-shadow:0 0 10px gold;">
+       💞 نکاح سنت ہے 💞
+    </a>
+</div>
+""", unsafe_allow_html=True)
 
 menu = st.sidebar.radio("نیویگیشن", ["📋 نوکریاں دیکھیں", "✍️ نوکری ڈالیں", "🔐 ایڈمن"])
 
